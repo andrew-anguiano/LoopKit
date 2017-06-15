@@ -14,7 +14,7 @@ extension TimeInterval {
         return self.init(minutes: minutes)
     }
 
-    init(minutes: Double) {
+   public init(minutes: Double) {
         self.init(minutes * 60)
     }
 
