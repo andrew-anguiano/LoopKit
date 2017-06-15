@@ -20,21 +20,21 @@ open class TextFieldTableViewController: UITableViewController, UITextFieldDeleg
 
     private weak var textField: UITextField?
 
-    public var indexPath: IndexPath?
+    @objc public var indexPath: IndexPath?
 
-    public var placeholder: String?
+    @objc public var placeholder: String?
 
-    public var unit: String?
+    @objc public var unit: String?
 
-    public var value: String? {
+    @objc public var value: String? {
         didSet {
             delegate?.textFieldTableViewControllerDidEndEditing(self)
         }
     }
 
-    public var contextHelp: String?
+    @objc public var contextHelp: String?
 
-    public var keyboardType = UIKeyboardType.default
+    @objc public var keyboardType = UIKeyboardType.default
 
     open weak var delegate: TextFieldTableViewControllerDelegate?
 

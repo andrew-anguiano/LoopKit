@@ -12,7 +12,7 @@ import HealthKit
 
 public class GlucoseRangeScheduleTableViewController: DailyValueScheduleTableViewController, RepeatingScheduleValueTableViewCellDelegate {
 
-    public var unit: HKUnit = HKUnit.milligramsPerDeciliter() {
+    @objc public var unit: HKUnit = HKUnit.milligramsPerDeciliter() {
         didSet {
             unitDisplayString = unit.glucoseUnitDisplayString
         }
@@ -215,7 +215,7 @@ public class GlucoseRangeScheduleTableViewController: DailyValueScheduleTableVie
         super.repeatingScheduleValueTableViewCellDidUpdateDate(cell)
     }
 
-    func repeatingScheduleValueTableViewCellDidUpdateValue(_ cell: RepeatingScheduleValueTableViewCell) {
+    @objc func repeatingScheduleValueTableViewCellDidUpdateValue(_ cell: RepeatingScheduleValueTableViewCell) {
         if let indexPath = tableView.indexPath(for: cell), let cell = cell as? GlucoseRangeTableViewCell {
             let currentItem = scheduleItems[indexPath.row]
 
@@ -227,7 +227,7 @@ public class GlucoseRangeScheduleTableViewController: DailyValueScheduleTableVie
 
 
 extension GlucoseRangeScheduleTableViewController: GlucoseRangeOverrideTableViewCellDelegate {
-    func glucoseRangeOverrideTableViewCellDidUpdateValue(_ cell: GlucoseRangeOverrideTableViewCell) {
+    @objc func glucoseRangeOverrideTableViewCellDidUpdateValue(_ cell: GlucoseRangeOverrideTableViewCell) {
         workoutRange = DoubleRange(minValue: cell.minValue, maxValue: cell.maxValue)
     }
 }

@@ -16,7 +16,7 @@ public protocol DailyValueScheduleTableViewControllerDelegate: class {
 
 func insertableIndices<T>(for scheduleItems: [RepeatingScheduleValue<T>], removing row: Int, with interval: TimeInterval) -> [Bool] {
 
-    let insertableIndices = scheduleItems.enumerated().map { (index, item) -> Bool in
+    let insertableIndices = scheduleItems.enumerated().map { (__val:(Int, RepeatingScheduleValue<T>)) -> Bool in let (index,item) = __val; 
         if row == index {
             return true
         } else if index == 0 {
@@ -114,33 +114,33 @@ public class DailyValueScheduleTableViewController: UITableViewController {
 
     public weak var delegate: DailyValueScheduleTableViewControllerDelegate?
 
-    public func insertButtonItem() -> UIBarButtonItem {
+    @objc public func insertButtonItem() -> UIBarButtonItem {
         return UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addScheduleItem(_:)))
     }
 
     // MARK: - State
 
-    public var timeZone = TimeZone.currentFixed {
+    @objc public var timeZone = TimeZone.currentFixed {
         didSet {
             calendar.timeZone = timeZone
         }
     }
 
-    public var unitDisplayString: String = "U/hour"
+    @objc public var unitDisplayString: String = "U/hour"
 
     private var calendar = Calendar.current
 
-    var midnight: Date {
+    @objc var midnight: Date {
         return calendar.startOfDay(for: Date())
     }
 
-    func addScheduleItem(_ sender: Any?) {
+    @objc func addScheduleItem(_ sender: Any?) {
         // Updates the table view state. Subclasses should update their data model before calling super
 
         tableView.insertRows(at: [IndexPath(row: tableView.numberOfRows(inSection: 0), section: 0)], with: .automatic)
     }
 
-    func insertableIndiciesByRemovingRow(_ row: Int, withInterval timeInterval: TimeInterval) -> [Bool] {
+    @objc func insertableIndiciesByRemovingRow(_ row: Int, withInterval timeInterval: TimeInterval) -> [Bool] {
         fatalError("Subclasses must override __FUNCTION__")
     }
 
@@ -239,7 +239,7 @@ public class DailyValueScheduleTableViewController: UITableViewController {
 
     // MARK: - RepeatingScheduleValueTableViewCellDelegate
 
-    func repeatingScheduleValueTableViewCellDidUpdateDate(_ cell: RepeatingScheduleValueTableViewCell) {
+    @objc func repeatingScheduleValueTableViewCellDidUpdateDate(_ cell: RepeatingScheduleValueTableViewCell) {
 
         // Updates the TableView state. Subclasses should update their data model
         if let indexPath = tableView.indexPath(for: cell) {

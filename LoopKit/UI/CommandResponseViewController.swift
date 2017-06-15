@@ -12,7 +12,7 @@ import UIKit
 public class CommandResponseViewController: UIViewController {
     public typealias Command = (_ completionHandler: @escaping (_ responseText: String) -> Void) -> String
 
-    public init(command: @escaping Command) {
+    @objc public init(command: @escaping Command) {
         self.command = command
 
         super.init(nibName: nil, bundle: nil)
@@ -54,7 +54,7 @@ extension CommandResponseViewController: UIActivityItemSource {
         return title ?? textView.text ?? ""
     }
 
-    public func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivityType) -> Any? {
+    public func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivityType?) -> Any? {
         return textView.attributedText ?? ""
     }
 

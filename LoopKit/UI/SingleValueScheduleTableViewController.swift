@@ -52,7 +52,7 @@ public class SingleValueScheduleTableViewController: DailyValueScheduleTableView
         return insertableIndices(for: scheduleItems, removing: row, with: timeInterval)
     }
 
-    func preferredValueFractionDigits() -> Int {
+    @objc func preferredValueFractionDigits() -> Int {
         return 1
     }
 
@@ -166,7 +166,7 @@ public class SingleValueScheduleTableViewController: DailyValueScheduleTableView
         super.repeatingScheduleValueTableViewCellDidUpdateDate(cell)
     }
 
-    func repeatingScheduleValueTableViewCellDidUpdateValue(_ cell: RepeatingScheduleValueTableViewCell) {
+    @objc func repeatingScheduleValueTableViewCellDidUpdateValue(_ cell: RepeatingScheduleValueTableViewCell) {
         if let indexPath = tableView.indexPath(for: cell) {
             let currentItem = scheduleItems[indexPath.row]
 

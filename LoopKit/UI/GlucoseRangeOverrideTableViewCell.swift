@@ -18,19 +18,19 @@ class GlucoseRangeOverrideTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     weak var delegate: GlucoseRangeOverrideTableViewCellDelegate?
 
-    var minValue: Double = 0 {
+    @objc var minValue: Double = 0 {
         didSet {
             minValueTextField.text = valueNumberFormatter.string(from: minValue.rawValue)
         }
     }
 
-    var maxValue: Double = 0 {
+    @objc var maxValue: Double = 0 {
         didSet {
             maxValueTextField.text = valueNumberFormatter.string(from: maxValue.rawValue)
         }
     }
 
-    lazy var valueNumberFormatter: NumberFormatter = {
+    @objc lazy var valueNumberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.minimumFractionDigits = 1
@@ -38,7 +38,7 @@ class GlucoseRangeOverrideTableViewCell: UITableViewCell, UITextFieldDelegate {
         return formatter
     }()
 
-    var unitString: String? {
+    @objc var unitString: String? {
         get {
             return unitLabel.text
         }

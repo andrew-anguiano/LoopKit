@@ -18,7 +18,7 @@ extension UIViewController {
      - parameter animated:   Whether to animate the alert
      - parameter completion: An optional closure to execute after the presentation finishes
      */
-    public func presentAlertController(withTitle title: String?, message: String, animated: Bool = true, completion: (() -> Void)? = nil) {
+    @objc public func presentAlertController(withTitle title: String?, message: String, animated: Bool = true, completion: (() -> Void)? = nil) {
         let alert = UIAlertController(
             title: title,
             message: message,
@@ -44,7 +44,7 @@ extension UIViewController {
      - parameter animated:   Whether to animate the alert
      - parameter completion: An optional closure to execute after the presentation finishes
      */
-    public func presentAlertController(with error: Error, animated: Bool = true, completion: (() -> Void)? = nil) {
+    @objc public func presentAlertController(with error: Error, animated: Bool = true, completion: (() -> Void)? = nil) {
 
         // See: https://forums.developer.apple.com/thread/17431
         // The compiler automatically emits the code necessary to translate between any ErrorType and NSError.
@@ -68,7 +68,7 @@ extension UIViewController {
      - parameter animated:                Whether to animate the presentation
      - parameter completion:              An optional closure to execute after the presentation finishes
      */
-    public func presentViewControllerOnActiveViewController(_ viewControllerToPresent: UIViewController, animated: Bool, completion: (() -> Void)?) {
+    @objc public func presentViewControllerOnActiveViewController(_ viewControllerToPresent: UIViewController, animated: Bool, completion: (() -> Void)?) {
         var presentingViewController: UIViewController? = self
 
         if presentingViewController?.view.window == nil {

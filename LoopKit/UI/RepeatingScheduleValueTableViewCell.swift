@@ -20,7 +20,7 @@ class RepeatingScheduleValueTableViewCell: UITableViewCell, UITextFieldDelegate 
 
     weak var delegate: RepeatingScheduleValueTableViewCellDelegate?
 
-    var timeZone: TimeZone! {
+    @objc var timeZone: TimeZone! {
         didSet {
             dateFormatter.timeZone = timeZone
             datePicker.timeZone = timeZone
@@ -35,7 +35,7 @@ class RepeatingScheduleValueTableViewCell: UITableViewCell, UITextFieldDelegate 
         return dateFormatter
     }()
 
-    var date: Date = Date() {
+    @objc var date: Date = Date() {
         didSet {
             dateLabel.text = dateFormatter.string(from: date)
 
@@ -45,17 +45,17 @@ class RepeatingScheduleValueTableViewCell: UITableViewCell, UITextFieldDelegate 
         }
     }
 
-    var value: Double = 0 {
+    @objc var value: Double = 0 {
         didSet {
             textField.text = valueNumberFormatter.string(from: value.rawValue)
         }
     }
 
-    var datePickerInterval: TimeInterval {
+    @objc var datePickerInterval: TimeInterval {
         return TimeInterval(minutes: Double(datePicker.minuteInterval))
     }
 
-    lazy var valueNumberFormatter: NumberFormatter = {
+    @objc lazy var valueNumberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.minimumFractionDigits = 1
@@ -88,7 +88,7 @@ class RepeatingScheduleValueTableViewCell: UITableViewCell, UITextFieldDelegate 
         datePickerHeightConstraint.constant = selected ? datePickerExpandedHeight : 0
     }
 
-    var unitString: String? {
+    @objc var unitString: String? {
         get {
             return unitLabel.text
         }

@@ -11,7 +11,7 @@ import Foundation
 
 // MARK: - Extensions useful in parsing fixture dates
 extension DateFormatter {
-    static func ISO8601Strict() -> Self {
+    @objc static func ISO8601Strict() -> Self {
         let dateFormatter = self.init()
 
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
@@ -20,7 +20,7 @@ extension DateFormatter {
         return dateFormatter
     }
 
-    static func ISO8601LocalTime() -> Self {
+    @objc static func ISO8601LocalTime() -> Self {
         let dateFormatter = self.init()
 
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
@@ -30,7 +30,7 @@ extension DateFormatter {
         return dateFormatter
     }
 
-    static func localTime() -> Self {
+    @objc static func localTime() -> Self {
         let timeFormatter = self.init()
 
         timeFormatter.dateFormat = "HH:mm:ss"
